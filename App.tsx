@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import {Box, UtilityThemeProvider} from 'react-native-design-utility';
 import RootNavigation from './src/navigation/RootNavigation';
-import HomeScreen from './src/screens/HomeScreen';
+import HomeScreen from './src/screens/listenNow/ListenNowScreen';
 
 declare const global: {HermesInternal: null | {}};
 

@@ -1,12 +1,12 @@
 import React from 'react';
 import {Box, Text} from 'react-native-design-utility';
 
-const HomeScreen = () => {
+const ListenNowScreen = () => {
   return (
     <Box f={1} center>
-      <Text size="lg">Hello</Text>
+      <Text size="lg">Listen Now</Text>
     </Box>
   );
 };
 
-export default HomeScreen;
+export default ListenNowScreen;
