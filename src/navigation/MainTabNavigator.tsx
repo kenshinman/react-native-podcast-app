@@ -48,7 +48,7 @@ const SearchStackNavigator = () => {
 
 const MainTabNavigator = () => {
   return (
-    <MainTab.Navigator>
+    <MainTab.Navigator initialRouteName="Search">
       <MainTab.Screen
         name="ListenNow"
         component={ListenNowStackNavigator}
