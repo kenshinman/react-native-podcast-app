@@ -1,21 +1,14 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
-import {Box, UtilityThemeProvider} from 'react-native-design-utility';
+import {StyleSheet} from 'react-native';
+import {UtilityThemeProvider} from 'react-native-design-utility';
+import {theme} from './src/constants/theme';
 import RootNavigation from './src/navigation/RootNavigation';
-import HomeScreen from './src/screens/listenNow/ListenNowScreen';
 
 declare const global: {HermesInternal: null | {}};
 
 const App = () => {
   return (
-    <UtilityThemeProvider>
+    <UtilityThemeProvider theme={theme}>
       <RootNavigation />
     </UtilityThemeProvider>
   );
