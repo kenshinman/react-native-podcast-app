@@ -24,7 +24,7 @@ const PodcastListItem: FC<Props> = ({item}) => {
           {item.podcastName}
         </Text>
         <Text size="xs" color="grey">
-          This is the subtitle
+          {item.artist}
         </Text>
         <TouchableOpacity
           onPress={() => navigation.navigate('PodcastDetails', {data: item})}>

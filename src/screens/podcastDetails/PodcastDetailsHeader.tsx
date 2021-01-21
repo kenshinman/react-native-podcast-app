@@ -17,7 +17,7 @@ const PodcastDetailsHeader: FC<Props> = ({data}) => {
           </Box>
         )}
         <Box f={1}>
-          <Text size="lg" bold>
+          <Text size="lg" bold numberOfLines={2}>
             {data.podcastName}
           </Text>
           <Text size="xs" color="grey">
