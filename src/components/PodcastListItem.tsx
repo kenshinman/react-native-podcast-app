@@ -1,6 +1,8 @@
+import {useNavigation} from '@react-navigation/native';
 import React, {FC} from 'react';
 import {Image, StyleSheet} from 'react-native';
 import {Box, Text} from 'react-native-design-utility';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 import {SearchQuery_search} from '../types/graphql';
 
 interface Props {
@@ -8,6 +10,8 @@ interface Props {
 }
 
 const PodcastListItem: FC<Props> = ({item}) => {
+  const navigation = useNavigation();
+
   return (
     <Box h={90} dir={'row'} align="center" px="sm">
       <Box h={70} w={70} bg="blueLight" mr={10} radius={10}>
@@ -17,15 +21,17 @@ const PodcastListItem: FC<Props> = ({item}) => {
       </Box>
       <Box f={1}>
         <Text bold numberOfLines={1}>
-          {' '}
-          item {item.artist}
+          {item.podcastName}
         </Text>
         <Text size="xs" color="grey">
           This is the subtitle
         </Text>
-        <Text size="xs" color="blueLight">
-          {item.episodesCount} Episodes
-        </Text>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('PodcastDetails', {data: item})}>
+          <Text size="xs" color="blueLight">
+            {item.episodesCount} Episodes
+          </Text>
+        </TouchableOpacity>
       </Box>
     </Box>
   );

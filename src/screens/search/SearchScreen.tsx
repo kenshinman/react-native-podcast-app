@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {Box, Text} from 'react-native-design-utility';
 import {TextInput, StyleSheet, FlatList} from 'react-native';
 import {theme} from '../../constants/theme';
@@ -10,6 +10,8 @@ import {
   SearchQuery_search,
 } from '../../types/graphql';
 import searchQuery from '../../graphql/query/searchQuery';
+import EmptySearchState from '../../components/EmptySearchState';
+import SearchLoading from '../../components/SearchLoading';
 const d = [{id: 1}, {id: 2}];
 
 const SearchScreen = () => {
@@ -27,10 +29,6 @@ const SearchScreen = () => {
     }
   };
 
-  useEffect(() => {
-    console.log(data);
-  });
-
   return (
     <Box f={1} bg="white">
       <Box h={50} w="100%" px="sm" my="sm">
@@ -44,18 +42,21 @@ const SearchScreen = () => {
           onSubmitEditing={onSearch}
         />
       </Box>
-      <FlatList<SearchQuery_search>
-        keyboardShouldPersistTaps="never"
-        contentContainerStyle={styles.listContentContainer}
-        keyExtractor={(item) => String(item.feedUrl)}
-        data={data?.search ?? []}
-        ListEmptyComponent={
-          <Box f={1} center>
-            <Text color="grey">No podcasts, please search something...</Text>
-          </Box>
-        }
-        renderItem={({item}) => <PodcastListItem item={item} />}
-      />
+      {error ? (
+        <Box f={1} center>
+          <Text color="red">{error.message}</Text>
+        </Box>
+      ) : (
+        <FlatList<SearchQuery_search>
+          keyboardShouldPersistTaps="never"
+          contentContainerStyle={styles.listContentContainer}
+          keyExtractor={(item, index) => `${item.feedUrl}-${index}`}
+          data={data?.search ?? []}
+          ListEmptyComponent={<>{!loading && <EmptySearchState />}</>}
+          ListHeaderComponent={<>{loading && <SearchLoading />}</>}
+          renderItem={({item}) => <PodcastListItem item={item} />}
+        />
+      )}
     </Box>
   );
 };
