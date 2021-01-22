@@ -41,7 +41,12 @@ const LibraryStackNavigator = () => {
 const SearchStackNavigator = () => {
   return (
     <SearchStack.Navigator
-      screenOptions={{headerTintColor: theme.color.blueLight}}>
+      screenOptions={{
+        headerTintColor: theme.color.blueLight,
+        headerTitleStyle: {
+          color: theme.color.blueLight,
+        },
+      }}>
       <SearchStack.Screen
         options={{title: 'Search'}}
         name="Search"
