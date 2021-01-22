@@ -1,11 +1,9 @@
 import React, {FC} from 'react';
 import {Box, Text} from 'react-native-design-utility';
-import {SearchQuery_search} from '../../types/graphql';
+import {FeedQuery_feed, SearchQuery_search} from '../../types/graphql';
 
 type Props = {
-  item: {
-    id: Number;
-  };
+  item: FeedQuery_feed;
 };
 
 const DetailsListItem: FC<Props> = ({item}) => {
@@ -15,13 +13,10 @@ const DetailsListItem: FC<Props> = ({item}) => {
         FRIDAY
       </Text>
       <Text bold size="xs">
-        #{item.id} Item
+        #{item.title}
       </Text>
       <Text size="sm" numberOfLines={2}>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia enim
-        quibusdam consequatur perspiciatis fugit. Dignissimos, cupiditate!
-        Facere tempora non, repudiandae vitae animi pariatur, tempore est libero
-        voluptas molestiae dignissimos autem.
+        {item.description}
       </Text>
     </Box>
   );

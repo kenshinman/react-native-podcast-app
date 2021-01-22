@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {Image, StyleSheet} from 'react-native';
+import {ActivityIndicator, Image, StyleSheet} from 'react-native';
 import {Box, Text} from 'react-native-design-utility';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import {theme} from '../../constants/theme';
@@ -8,9 +8,18 @@ import {SearchQuery_search} from '../../types/graphql';
 
 type Props = {
   data: SearchQuery_search;
+  latestFeed?: any;
+  loading?: Boolean;
 };
 
-const PodcastDetailsHeader: FC<Props> = ({data}) => {
+const PodcastDetailsHeader: FC<Props> = ({data, latestFeed, loading}) => {
+  if (loading) {
+    return (
+      <Box h={200}>
+        <ActivityIndicator color={theme.color.blueLight} size={'large'} />
+      </Box>
+    );
+  }
   return (
     <>
       <Box dir="row" px="sm" mt="sm" mb="md">
@@ -35,9 +44,9 @@ const PodcastDetailsHeader: FC<Props> = ({data}) => {
         <Box mr={10}>
           <FeatherIcon name="play" size={30} color={theme.color.blueLight} />
         </Box>
-        <Box>
+        <Box f={1}>
           <Text bold>Play</Text>
-          <Text size="sm"># 400 The last episode</Text>
+          <Text size="sm">{latestFeed.title}</Text>
         </Box>
       </Box>
       <Box px="sm" mb="md">
