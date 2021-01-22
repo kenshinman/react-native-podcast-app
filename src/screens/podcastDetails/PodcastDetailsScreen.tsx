@@ -1,7 +1,8 @@
-import {RouteProp, useRoute} from '@react-navigation/native';
 import React from 'react';
+import {RouteProp, useRoute} from '@react-navigation/native';
 import {Box, Text} from 'react-native-design-utility';
-import {FlatList, Image, StyleSheet} from 'react-native';
+import {FlatList, StyleSheet} from 'react-native';
+
 import {SearchStackRouteParamList} from '../../navigation/types';
 import PodcastDetailsHeader from './PodcastDetailsHeader';
 import DetailsListItem from './DetailsListItem';

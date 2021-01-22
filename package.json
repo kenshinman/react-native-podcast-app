@@ -9,7 +9,8 @@
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "commit": "git add . && git commit -m",
-    "codegen": "apollo service:download --endpoint=https://frozen-river-77426.herokuapp.com/query && apollo client:codegen src/types/graphql.ts --includes='src/**/*.ts' --localSchemaFile=schema.json --outputFlat --target=typescript"
+    "codegen": "apollo service:download --endpoint=https://frozen-river-77426.herokuapp.com/query && apollo client:codegen src/types/graphql.ts --includes='src/**/*.ts' --localSchemaFile=schema.json --outputFlat --target=typescript",
+    "postinstall": "npx typesync"
   },
   "dependencies": {
     "@apollo/client": "^3.3.7",
@@ -31,8 +32,12 @@
     "@babel/core": "^7.8.4",
     "@babel/runtime": "^7.8.4",
     "@react-native-community/eslint-config": "^1.1.0",
+    "@types/babel__core": "^7.1.12",
+    "@types/eslint": "^6.8.1",
     "@types/jest": "^25.2.3",
+    "@types/react": "17.0.0",
     "@types/react-native": "^0.63.2",
+    "@types/react-native-vector-icons": "^6.4.6",
     "@types/react-test-renderer": "^16.9.2",
     "babel-jest": "^25.1.0",
     "eslint": "^6.5.1",

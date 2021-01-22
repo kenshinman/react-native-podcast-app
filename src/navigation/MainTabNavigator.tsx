@@ -1,6 +1,8 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
+import FeatherIcon from 'react-native-vector-icons/Feather';
+
 import ListenNowScreen from '../screens/listenNow/ListenNowScreen';
 import LibraryScreen from '../screens/library/LibraryScreen';
 import SearchScreen from '../screens/search/SearchScreen';
@@ -54,16 +56,41 @@ const SearchStackNavigator = () => {
   );
 };
 
+const ICON_SIZE = 24;
+
 const MainTabNavigator = () => {
   return (
-    <MainTab.Navigator initialRouteName="Search">
+    <MainTab.Navigator
+      initialRouteName="Search"
+      tabBarOptions={{activeTintColor: theme.color.blueLight}}>
       <MainTab.Screen
         name="ListenNow"
         component={ListenNowStackNavigator}
-        options={{title: 'Listen Now'}}
+        options={{
+          title: 'Listen Now',
+          tabBarIcon: ({color}) => (
+            <FeatherIcon name="headphones" size={ICON_SIZE} color={color} />
+          ),
+        }}
       />
-      <MainTab.Screen name="Library" component={LibraryStackNavigator} />
-      <MainTab.Screen name="Search" component={SearchStackNavigator} />
+      <MainTab.Screen
+        name="Library"
+        component={LibraryStackNavigator}
+        options={{
+          tabBarIcon: ({color}) => (
+            <FeatherIcon name="inbox" size={ICON_SIZE} color={color} />
+          ),
+        }}
+      />
+      <MainTab.Screen
+        name="Search"
+        component={SearchStackNavigator}
+        options={{
+          tabBarIcon: ({color}) => (
+            <FeatherIcon name="search" size={ICON_SIZE} color={color} />
+          ),
+        }}
+      />
     </MainTab.Navigator>
   );
 };

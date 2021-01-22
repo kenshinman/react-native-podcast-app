@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import {Box, Text} from 'react-native-design-utility';
 import {TextInput, StyleSheet, FlatList} from 'react-native';
+import FeatherIcon from 'react-native-vector-icons/Feather';
+
 import {theme} from '../../constants/theme';
 import PodcastListItem from '../../components/PodcastListItem';
 import {useLazyQuery} from '@apollo/client';
@@ -32,15 +34,31 @@ const SearchScreen = () => {
   return (
     <Box f={1} bg="white">
       <Box h={50} w="100%" px="sm" my="sm">
-        <TextInput
-          style={styles.input}
-          placeholder="Search Podcasts"
-          keyboardAppearance="default"
-          showSoftInputOnFocus
-          onChangeText={setTerm}
-          autoCorrect={false}
-          onSubmitEditing={onSearch}
-        />
+        <Box
+          f={1}
+          dir="row"
+          align="center"
+          bg="greyLightest"
+          px="sm"
+          h={40}
+          radius={10}>
+          <Box mr={10}>
+            <FeatherIcon
+              name="search"
+              size={20}
+              color={theme.color.blueLight}
+            />
+          </Box>
+          <TextInput
+            style={styles.input}
+            placeholder="Search Podcasts"
+            keyboardAppearance="default"
+            showSoftInputOnFocus
+            onChangeText={setTerm}
+            autoCorrect={false}
+            onSubmitEditing={onSearch}
+          />
+        </Box>
       </Box>
       {error ? (
         <Box f={1} center>
@@ -65,9 +83,7 @@ const styles = StyleSheet.create({
   input: {
     height: 40,
     flex: 1,
-    backgroundColor: theme.color.greyLightest,
     borderRadius: 10,
-    paddingHorizontal: theme.space.sm,
     fontSize: theme.text.size.md,
   },
   listContentContainer: {
