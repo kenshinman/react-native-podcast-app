@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import {Box, Text} from 'react-native-design-utility';
-import {getWeekDay} from '../../lib/dateTimeHelper';
+import {getWeekDay, humanDuration} from '../../lib/dateTimeHelper';
 import {FeedQuery_feed, SearchQuery_search} from '../../types/graphql';
 
 type Props = {
@@ -20,7 +20,7 @@ const DetailsListItem: FC<Props> = ({item}) => {
         {item.description}
       </Text>
       <Text size="sm" color="grey">
-        {item.duration}
+        {humanDuration(item.duration)}
       </Text>
     </Box>
   );
