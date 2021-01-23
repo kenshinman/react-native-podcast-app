@@ -28,7 +28,7 @@ const PodcastDetailsScreen = () => {
         ListHeaderComponent={
           <PodcastDetailsHeader
             data={podcastData}
-            latestFeed={data?.feed[0] || {}}
+            latestFeed={data?.feed[0]}
             loading={loading}
           />
         }

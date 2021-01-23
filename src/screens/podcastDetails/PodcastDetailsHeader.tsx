@@ -1,14 +1,16 @@
 import React, {FC} from 'react';
 import {ActivityIndicator, Image, StyleSheet} from 'react-native';
 import {Box, Text} from 'react-native-design-utility';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import {theme} from '../../constants/theme';
+import {usePlayerContext} from '../../contexts/PlayerContext';
 
-import {SearchQuery_search} from '../../types/graphql';
+import {FeedQuery_feed, SearchQuery_search} from '../../types/graphql';
 
 type Props = {
   data: SearchQuery_search;
-  latestFeed?: any;
+  latestFeed?: FeedQuery_feed | null;
   loading?: Boolean;
 };
 
@@ -20,6 +22,7 @@ const PodcastDetailsHeader: FC<Props> = ({data, latestFeed, loading}) => {
       </Box>
     );
   }
+  const {play} = usePlayerContext();
   return (
     <>
       <Box dir="row" px="sm" mt="sm" mb="md">
@@ -42,11 +45,25 @@ const PodcastDetailsHeader: FC<Props> = ({data, latestFeed, loading}) => {
       </Box>
       <Box px="sm" mb="md" dir="row" align="center">
         <Box mr={10}>
-          <FeatherIcon name="play" size={30} color={theme.color.blueLight} />
+          <TouchableOpacity
+            onPress={() => {
+              if (!latestFeed) {
+                return;
+              }
+              play({
+                title: `${latestFeed?.title}`,
+                artwork: latestFeed.image ?? data.thumbnail,
+                id: latestFeed.linkUrl,
+                url: latestFeed.linkUrl,
+                artist: data.artist,
+              });
+            }}>
+            <FeatherIcon name="play" size={30} color={theme.color.blueLight} />
+          </TouchableOpacity>
         </Box>
         <Box f={1}>
           <Text bold>Play</Text>
-          <Text size="sm">{latestFeed.title}</Text>
+          <Text size="sm">{latestFeed?.title}</Text>
         </Box>
       </Box>
       <Box px="sm" mb="md">
