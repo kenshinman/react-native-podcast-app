@@ -16,6 +16,7 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* podcastappTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* podcastappTests.m */; };
+		55EF62EA25BBAC9D00C18408 /* Void.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EF62E925BBAC9D00C18408 /* Void.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		C1BF61CB03D4ECA88ADE2A68 /* libPods-podcastapp-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC269A8870B995E3B00B182 /* libPods-podcastapp-tvOSTests.a */; };
 		DFB69009C4E01BF5DC7CAFAC /* libPods-podcastapp-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D18B1CD733041B1C3C34471B /* libPods-podcastapp-tvOS.a */; };
@@ -54,6 +55,8 @@
 		2D02E47B1E0B4A5D006451C7 /* podcastapp-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "podcastapp-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* podcastapp-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "podcastapp-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		39A5833ABE1DBB8033630779 /* Pods-podcastapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-podcastapp.debug.xcconfig"; path = "Target Support Files/Pods-podcastapp/Pods-podcastapp.debug.xcconfig"; sourceTree = "<group>"; };
+		55EF62E825BBAC9D00C18408 /* podcastapp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "podcastapp-Bridging-Header.h"; sourceTree = "<group>"; };
+		55EF62E925BBAC9D00C18408 /* Void.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Void.swift; sourceTree = "<group>"; };
 		5CC269A8870B995E3B00B182 /* libPods-podcastapp-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-podcastapp-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64AF19008E136E591DFC31A8 /* Pods-podcastapp-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-podcastapp-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-podcastapp-tvOS/Pods-podcastapp-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		731690DC99D18D45F59EB28E /* Pods-podcastapp-podcastappTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-podcastapp-podcastappTests.debug.xcconfig"; path = "Target Support Files/Pods-podcastapp-podcastappTests/Pods-podcastapp-podcastappTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -134,7 +137,6 @@
 				7C9DEA0CD464179547FEFA3C /* Pods-podcastapp-tvOSTests.debug.xcconfig */,
 				1B19CF80895C5119FE71AC42 /* Pods-podcastapp-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -148,6 +150,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				55EF62E925BBAC9D00C18408 /* Void.swift */,
+				55EF62E825BBAC9D00C18408 /* podcastapp-Bridging-Header.h */,
 			);
 			name = podcastapp;
 			sourceTree = "<group>";
@@ -294,7 +298,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1230;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -634,6 +638,7 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				55EF62EA25BBAC9D00C18408 /* Void.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -674,6 +679,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 731690DC99D18D45F59EB28E /* Pods-podcastapp-podcastappTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -697,6 +703,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7A815D1A2EFB9113D54E83E7 /* Pods-podcastapp-podcastappTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = podcastappTests/Info.plist;
@@ -730,6 +737,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = podcastapp;
+				SWIFT_OBJC_BRIDGING_HEADER = "podcastapp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -752,6 +760,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = podcastapp;
+				SWIFT_OBJC_BRIDGING_HEADER = "podcastapp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
