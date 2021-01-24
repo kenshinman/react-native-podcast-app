@@ -19,6 +19,7 @@ const MiniPlayer: FC = () => {
   } = usePlayerContext();
 
   if (!currentTrack || isEmpty) return null;
+
   return (
     <Box
       h={75}

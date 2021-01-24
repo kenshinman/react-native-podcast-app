@@ -5,6 +5,7 @@ import TrackPlayer, {
   STATE_STOPPED,
   STATE_PLAYING,
   STATE_PAUSED,
+  useTrackPlayerEvents,
 } from 'react-native-track-player';
 
 interface PlayerContextType {
@@ -21,7 +22,7 @@ const PlayerContext = createContext<PlayerContextType>({
   isPlaying: false,
   isPaused: false,
   isStopped: false,
-  isEmpty: false,
+  isEmpty: true,
   currentTrack: null,
   play: () => null,
   pause: () => null,
@@ -30,6 +31,10 @@ const PlayerContext = createContext<PlayerContextType>({
 const PlayerContextProvider: FC = ({children}) => {
   const [playerState, setPlayerState] = useState<null | TrackPlayerState>(null);
   const [currentTrack, setCurrentTrack] = useState<null | Track>(null);
+
+  useTrackPlayerEvents(['playback-state'], (event: any) => {
+    setPlayerState(event.state);
+  });
 
   useEffect(() => {
     const listener = TrackPlayer.addEventListener(
@@ -44,19 +49,14 @@ const PlayerContextProvider: FC = ({children}) => {
   }, []);
 
   useEffect(() => {
-    (async () => {
-      const state = await TrackPlayer.getState();
-      setPlayerState(state);
-      console.log({state});
-    })();
+    console.log({playerState});
   }, [playerState]);
 
   const play = async (track: Track) => {
-    await TrackPlayer.stop();
-    await TrackPlayer.destroy();
+    // await TrackPlayer.stop();
     await TrackPlayer.add([track]);
     setCurrentTrack(track);
-    console.log({playerState});
+
     await TrackPlayer.play();
   };
 

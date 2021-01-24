@@ -7,7 +7,7 @@ import TrackPlayer from 'react-native-track-player';
 import {theme} from './src/constants/theme';
 import RootNavigation from './src/navigation/RootNavigation';
 import {client} from './src/graphql/client';
-import trackPlayerServices from './src/services/TrackPlayerServices';
+// import trackPlayerServices from './src/services/TrackPlayerServices';
 import PlayerContextProvider from './src/contexts/PlayerContext';
 
 declare const global: {HermesInternal: null | {}};
@@ -16,8 +16,27 @@ const App = () => {
   const [isReady, setIsReady] = useState<boolean>(false);
   useEffect(() => {
     TrackPlayer.setupPlayer().then(() => {
-      TrackPlayer.registerPlaybackService(() => trackPlayerServices);
+      // TrackPlayer.registerPlaybackService(() => trackPlayerServices);
       setIsReady(true);
+      TrackPlayer.updateOptions({
+        stopWithApp: true,
+        // dismissable: true,
+        capabilities: [
+          TrackPlayer.CAPABILITY_PLAY,
+          TrackPlayer.CAPABILITY_PAUSE,
+          TrackPlayer.CAPABILITY_STOP,
+        ],
+        notificationCapabilities: [
+          TrackPlayer.CAPABILITY_PLAY,
+          TrackPlayer.CAPABILITY_PAUSE,
+          TrackPlayer.CAPABILITY_STOP,
+        ],
+        compactCapabilities: [
+          TrackPlayer.CAPABILITY_PLAY,
+          TrackPlayer.CAPABILITY_PAUSE,
+          TrackPlayer.CAPABILITY_STOP,
+        ],
+      });
     });
   }, []);
 
