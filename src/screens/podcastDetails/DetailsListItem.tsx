@@ -26,7 +26,7 @@ const DetailsListItem: FC<Props> = ({item, podcast}) => {
           #{item.title}
         </Text>
         <Text size="sm" numberOfLines={2}>
-          {item.description}
+          {item.summary}
         </Text>
         <Text size="sm" color="grey">
           {humanDuration(item.duration)}

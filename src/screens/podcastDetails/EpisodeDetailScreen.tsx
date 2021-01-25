@@ -1,6 +1,6 @@
 import {RouteProp, useRoute} from '@react-navigation/native';
 import React from 'react';
-import {Image} from 'react-native';
+import {Image, Linking} from 'react-native';
 import {Box, Text} from 'react-native-design-utility';
 import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Feather';
@@ -9,6 +9,7 @@ import {theme} from '../../constants/theme';
 import {usePlayerContext} from '../../contexts/PlayerContext';
 import {humanDuration} from '../../lib/dateTimeHelper';
 import {FeedQuery_feed, SearchQuery_search} from '../../types/graphql';
+import HtmlReader from '../../components/HtmlReader';
 
 const EpisodeDetailScreen = () => {
   const {podcast, episode} = (useRoute().params ?? {}) as {
@@ -70,7 +71,7 @@ const EpisodeDetailScreen = () => {
             <Text size="xl" bold>
               Episode Notes
             </Text>
-            <Text>{episode.description}</Text>
+            <HtmlReader html={episode.description} />
           </Box>
         </Box>
       </ScrollView>

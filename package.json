@@ -24,11 +24,14 @@
     "react-native-design-utility": "^1.0.9",
     "react-native-gesture-handler": "^1.9.0",
     "react-native-reanimated": "^1.13.2",
+    "react-native-render-html": "^5.0.1",
     "react-native-safe-area-context": "^3.1.9",
     "react-native-screens": "^2.15.1",
+    "react-native-sqlite-storage": "^5.0.0",
     "react-native-swift": "^1.2.3",
     "react-native-track-player": "^1.2.3",
-    "react-native-vector-icons": "^8.0.0"
+    "react-native-vector-icons": "^8.0.0",
+    "react-native-webview": "^11.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
@@ -39,6 +42,7 @@
     "@types/jest": "^25.2.3",
     "@types/react": "17.0.0",
     "@types/react-native": "^0.63.2",
+    "@types/react-native-sqlite-storage": "^5.0.0",
     "@types/react-native-vector-icons": "^6.4.6",
     "@types/react-test-renderer": "^16.9.2",
     "babel-jest": "^25.1.0",

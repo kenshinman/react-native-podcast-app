@@ -16,6 +16,7 @@ export interface FeedQuery_feed {
   pubDate: string;
   text: string;
   title: string;
+  summary: string;
 }
 
 export interface FeedQuery {
