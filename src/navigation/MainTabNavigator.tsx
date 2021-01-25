@@ -76,7 +76,7 @@ const SearchStackNavigator = () => {
       <SearchStack.Screen name="Search" component={SearchScreen} />
       <SearchStack.Screen
         name="PodcastDetails"
-        options={{title: ''}}
+        options={{title: '', headerBackTitle: 'Back'}}
         component={PodcastStackNavigator}
       />
     </SearchStack.Navigator>

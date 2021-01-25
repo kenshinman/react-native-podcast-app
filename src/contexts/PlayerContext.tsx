@@ -55,7 +55,9 @@ const PlayerContextProvider: FC = ({children}) => {
   }, [playerState]);
 
   const play = async (track: Track) => {
-    // await TrackPlayer.stop();
+    if (currentTrack && currentTrack.id !== track.id) {
+      await TrackPlayer.reset();
+    }
     await TrackPlayer.add([track]);
     setCurrentTrack(track);
 

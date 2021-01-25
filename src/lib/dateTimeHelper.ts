@@ -31,6 +31,11 @@ export const getWeekDay = (date: Date): WeekDayEnum => {
 };
 
 export const humanDuration = (ducation: string): string => {
-  const [h, m, s] = ducation.split(':');
-  return `${Number(h)}hrs. ${Number(m)}mins`;
+  const durationSplit = ducation.split(':');
+  if (durationSplit.length === 2) {
+    const [m] = durationSplit;
+    return `${Number(m)}mins`;
+  }
+  const [h, m, s] = durationSplit;
+  return `${Number(h) > 0 ? Number(h) + 'hrs' : ''}. ${Number(m)}mins`;
 };
