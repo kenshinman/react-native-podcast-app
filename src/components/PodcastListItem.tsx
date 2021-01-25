@@ -27,12 +27,7 @@ const PodcastListItem: FC<Props> = ({item}) => {
           {item.artist}
         </Text>
         <TouchableOpacity
-          onPress={() =>
-            navigation.navigate('PodcastDetails', {
-              screen: 'PodcastDetails',
-              params: {data: item},
-            })
-          }>
+          onPress={() => navigation.navigate('PodcastDetails', {data: item})}>
           <Text size="xs" color="blueLight">
             {item.episodesCount} Episodes
           </Text>
