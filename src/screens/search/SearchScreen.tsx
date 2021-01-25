@@ -40,7 +40,7 @@ const SearchScreen = () => {
           align="center"
           bg="greyLightest"
           px="sm"
-          h={40}
+          h={50}
           radius={10}>
           <Box mr={10}>
             <FeatherIcon
@@ -57,6 +57,8 @@ const SearchScreen = () => {
             onChangeText={setTerm}
             autoCorrect={false}
             onSubmitEditing={onSearch}
+            clearButtonMode="unless-editing"
+            clearTextOnFocus
           />
         </Box>
       </Box>
@@ -81,7 +83,7 @@ const SearchScreen = () => {
 
 const styles = StyleSheet.create({
   input: {
-    height: 40,
+    height: 50,
     flex: 1,
     borderRadius: 10,
     fontSize: theme.text.size.md,

@@ -38,7 +38,9 @@ const PodcastDetailsScreen = () => {
             <Box style={{height: StyleSheet.hairlineWidth}} bg="grey"></Box>
           </Box>
         )}
-        renderItem={({item}) => <DetailsListItem item={item} />}
+        renderItem={({item}) => (
+          <DetailsListItem podcast={podcastData} item={item} />
+        )}
       />
     </Box>
   );

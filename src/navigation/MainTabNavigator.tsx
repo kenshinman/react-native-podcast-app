@@ -12,11 +12,14 @@ import SearchScreen from '../screens/search/SearchScreen';
 import PodcastDetailsScreen from '../screens/podcastDetails/PodcastDetailsScreen';
 import {theme} from '../constants/theme';
 import MiniPlayer from '../components/MiniPlayer';
+import PodcastDetailsHeader from '../screens/podcastDetails/PodcastDetailsHeader';
+import EpisodeDetailScreen from '../screens/podcastDetails/EpisodeDetailScreen';
 
 const MainTab = createBottomTabNavigator();
 const ListenNowStack = createStackNavigator();
 const LibraryStack = createStackNavigator();
 const SearchStack = createStackNavigator();
+const PodcastStack = createStackNavigator();
 
 const ListenNowStackNavigator = () => {
   return (
@@ -42,6 +45,25 @@ const LibraryStackNavigator = () => {
   );
 };
 
+const PodcastStackNavigator = () => {
+  return (
+    <PodcastStack.Navigator
+      headerMode="none"
+      screenOptions={{
+        title: '',
+      }}>
+      <PodcastStack.Screen
+        name="PodcastDetails"
+        component={PodcastDetailsScreen}
+      />
+      <PodcastStack.Screen
+        name="EpisodeDetails"
+        component={EpisodeDetailScreen}
+      />
+    </PodcastStack.Navigator>
+  );
+};
+
 const SearchStackNavigator = () => {
   return (
     <SearchStack.Navigator
@@ -51,15 +73,11 @@ const SearchStackNavigator = () => {
           color: theme.color.blueLight,
         },
       }}>
+      <SearchStack.Screen name="Search" component={SearchScreen} />
       <SearchStack.Screen
-        options={{title: 'Search'}}
-        name="Search"
-        component={SearchScreen}
-      />
-      <SearchStack.Screen
-        options={{headerTitle: ''}}
         name="PodcastDetails"
-        component={PodcastDetailsScreen}
+        options={{title: ''}}
+        component={PodcastStackNavigator}
       />
     </SearchStack.Navigator>
   );

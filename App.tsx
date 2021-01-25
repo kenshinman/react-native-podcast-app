@@ -7,7 +7,6 @@ import TrackPlayer from 'react-native-track-player';
 import {theme} from './src/constants/theme';
 import RootNavigation from './src/navigation/RootNavigation';
 import {client} from './src/graphql/client';
-// import trackPlayerServices from './src/services/TrackPlayerServices';
 import PlayerContextProvider from './src/contexts/PlayerContext';
 
 declare const global: {HermesInternal: null | {}};
@@ -25,17 +24,22 @@ const App = () => {
           TrackPlayer.CAPABILITY_PLAY,
           TrackPlayer.CAPABILITY_PAUSE,
           TrackPlayer.CAPABILITY_STOP,
+          TrackPlayer.CAPABILITY_JUMP_FORWARD,
+          TrackPlayer.CAPABILITY_JUMP_BACKWARD,
         ],
         notificationCapabilities: [
           TrackPlayer.CAPABILITY_PLAY,
           TrackPlayer.CAPABILITY_PAUSE,
           TrackPlayer.CAPABILITY_STOP,
+          TrackPlayer.CAPABILITY_JUMP_FORWARD,
+          TrackPlayer.CAPABILITY_JUMP_BACKWARD,
         ],
         compactCapabilities: [
           TrackPlayer.CAPABILITY_PLAY,
           TrackPlayer.CAPABILITY_PAUSE,
           TrackPlayer.CAPABILITY_STOP,
         ],
+        jumpInterval: 10,
       });
     });
   }, []);

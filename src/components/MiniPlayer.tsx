@@ -16,6 +16,7 @@ const MiniPlayer: FC = () => {
     isPaused,
     isStopped,
     isEmpty,
+    seekTo,
   } = usePlayerContext();
 
   if (!currentTrack || isEmpty) return null;
@@ -46,26 +47,33 @@ const MiniPlayer: FC = () => {
           <Text numberOfLines={1}>{currentTrack.title}</Text>
         </Box>
         <Box>
-          {isPaused && (
-            <TouchableOpacity onPress={() => play(currentTrack!)}>
-              <Icon name="play" size={30} />
-            </TouchableOpacity>
-          )}
-          {isPlaying && (
-            <TouchableOpacity onPress={pause}>
-              <Icon name="pause" size={30} />
-            </TouchableOpacity>
-          )}
-          {isStopped && (
-            <TouchableOpacity onPress={pause}>
-              <Icon name="square" size={30} />
-            </TouchableOpacity>
-          )}
-          {/* {isStopped && (
-            <TouchableOpacity onPress={pause}>
-              <Icon name="square" size={30} />
-            </TouchableOpacity>
-          )} */}
+          <Box>
+            {isPaused && (
+              <TouchableOpacity onPress={() => play(currentTrack!)}>
+                <Icon name="play" size={30} />
+              </TouchableOpacity>
+            )}
+            {isPlaying && (
+              <TouchableOpacity onPress={pause}>
+                <Icon name="pause" size={30} />
+              </TouchableOpacity>
+            )}
+            {isStopped && (
+              <TouchableOpacity onPress={pause}>
+                <Icon name="square" size={30} />
+              </TouchableOpacity>
+            )}
+            {isStopped && (
+              <TouchableOpacity onPress={() => play(currentTrack)}>
+                <Icon name="play" size={30} />
+              </TouchableOpacity>
+            )}
+          </Box>
+        </Box>
+        <Box>
+          <TouchableOpacity onPress={() => seekTo()}>
+            <Icon name="rotate-cw" size={30} />
+          </TouchableOpacity>
         </Box>
       </Box>
     </Box>
