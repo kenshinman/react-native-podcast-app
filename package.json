@@ -10,7 +10,8 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "commit": "git add . && git commit -m",
     "codegen": "apollo service:download --endpoint=https://frozen-river-77426.herokuapp.com/query && apollo client:codegen src/types/graphql.ts --includes='src/**/*.ts' --localSchemaFile=schema.json --outputFlat --target=typescript",
-    "postinstall": "npx typesync"
+    "postinstall": "npx typesync",
+    "clean": "cd android && ./gradlew clean && cd ../"
   },
   "dependencies": {
     "@apollo/client": "^3.3.7",

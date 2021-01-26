@@ -23,7 +23,7 @@ const PodcastListItem: FC<Props> = ({item}) => {
         <Text bold numberOfLines={1}>
           {item.podcastName}
         </Text>
-        <Text size="xs" color="grey">
+        <Text size="xs" color="grey" numberOfLines={1}>
           {item.artist}
         </Text>
         <TouchableOpacity
