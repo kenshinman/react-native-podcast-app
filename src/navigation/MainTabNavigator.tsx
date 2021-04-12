@@ -14,6 +14,9 @@ import {theme} from '../constants/theme';
 import MiniPlayer from '../components/MiniPlayer';
 import PodcastDetailsHeader from '../screens/podcastDetails/PodcastDetailsHeader';
 import EpisodeDetailScreen from '../screens/podcastDetails/EpisodeDetailScreen';
+import {Alert, Button} from 'react-native';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import {Text} from 'react-native-design-utility';
 
 const MainTab = createBottomTabNavigator();
 const ListenNowStack = createStackNavigator();
@@ -44,25 +47,6 @@ const LibraryStackNavigator = () => {
     </LibraryStack.Navigator>
   );
 };
-
-// const PodcastStackNavigator = () => {
-//   return (
-//     <PodcastStack.Navigator
-//       headerMode="none"
-//       screenOptions={{
-//         title: '',
-//       }}>
-//       <PodcastStack.Screen
-//         name="PodcastDetails"
-//         component={PodcastDetailsScreen}
-//       />
-//       <PodcastStack.Screen
-//         name="EpisodeDetails"
-//         component={EpisodeDetailScreen}
-//       />
-//     </PodcastStack.Navigator>
-//   );
-// };
 
 const SearchStackNavigator = () => {
   return (
@@ -103,17 +87,19 @@ const MainTabNavigator = () => {
         return (
           <>
             <MiniPlayer />
+
             <BottomTabBar {...tabProps} />
           </>
         );
       }}
-      initialRouteName="Search"
+      initialRouteName="ListenNow"
       tabBarOptions={{activeTintColor: theme.color.blueLight}}>
       <MainTab.Screen
         name="ListenNow"
         component={ListenNowStackNavigator}
         options={{
           title: 'Listen Now',
+
           tabBarIcon: ({color}) => (
             <FeatherIcon name="headphones" size={ICON_SIZE} color={color} />
           ),
@@ -125,6 +111,11 @@ const MainTabNavigator = () => {
         options={{
           tabBarIcon: ({color}) => (
             <FeatherIcon name="inbox" size={ICON_SIZE} color={color} />
+          ),
+          tabBarButton: ({to}) => (
+            <TouchableOpacity onPress={() => console.log({to})}>
+              <Text>Hey</Text>
+            </TouchableOpacity>
           ),
         }}
       />

@@ -8,6 +8,7 @@ import {theme} from './src/constants/theme';
 import RootNavigation from './src/navigation/RootNavigation';
 import {client} from './src/graphql/client';
 import PlayerContextProvider from './src/contexts/PlayerContext';
+import DBContextProvider from './src/contexts/DBContext';
 
 declare const global: {HermesInternal: null | {}};
 
@@ -46,17 +47,19 @@ const App = () => {
 
   return (
     <UtilityThemeProvider theme={theme}>
-      <ApolloProvider client={client}>
-        {isReady ? (
-          <PlayerContextProvider>
-            <RootNavigation />
-          </PlayerContextProvider>
-        ) : (
-          <Box f={1} center>
-            <ActivityIndicator size="large" />
-          </Box>
-        )}
-      </ApolloProvider>
+      <DBContextProvider>
+        <ApolloProvider client={client}>
+          {isReady ? (
+            <PlayerContextProvider>
+              <RootNavigation />
+            </PlayerContextProvider>
+          ) : (
+            <Box f={1} center>
+              <ActivityIndicator size="large" />
+            </Box>
+          )}
+        </ApolloProvider>
+      </DBContextProvider>
     </UtilityThemeProvider>
   );
 };

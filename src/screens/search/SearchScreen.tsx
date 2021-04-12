@@ -58,7 +58,6 @@ const SearchScreen = () => {
             autoCorrect={false}
             onSubmitEditing={onSearch}
             clearButtonMode="unless-editing"
-            clearTextOnFocus
           />
         </Box>
       </Box>
